@@ -8,6 +8,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    env:
+      HEADLESS: "true"
     
     steps:
     - uses: actions/checkout@v4
@@ -40,7 +43,7 @@ jobs:
     
     - name: Run Behave tests
       run: |
-        behave --format json --outfile reports/results.json
+        behave behave -D headless=true --format json --outfile reports/results.json
     
     - name: Upload test reports
       if: always()
