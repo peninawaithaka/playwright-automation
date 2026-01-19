@@ -33,12 +33,14 @@ jobs:
     - name: Install Playwright browsers
       run: |
         playwright install chromium
-        playwright install-deps chromium
+
+    - name: Create reports directories
+      run: |
+        mkdir -p reports/screenshots
     
     - name: Run Behave tests
       run: |
         behave --format json --outfile reports/results.json
-        behave --format html --outfile reports/results.html
     
     - name: Upload test reports
       if: always()
@@ -46,7 +48,7 @@ jobs:
       with:
         name: test-reports
         path: reports/
-        retention-days: 30
+        retention-days: 10
     
     - name: Upload screenshots on failure
       if: failure()
@@ -54,4 +56,4 @@ jobs:
       with:
         name: screenshots
         path: reports/screenshots/
-        retention-days: 7
+        retention-days: 10
