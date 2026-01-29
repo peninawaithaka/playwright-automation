@@ -43,7 +43,7 @@ jobs:
     
     - name: Run Behave tests
       run: |
-        behave behave -D headless=true --format json --outfile reports/results.json
+        behave -D headless=true --format json --outfile reports/results.json
     
     - name: Upload test reports
       if: always()
