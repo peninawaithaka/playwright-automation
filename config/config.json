@@ -1,0 +1,18 @@
+{
+    "environments": {
+      "staging": {
+        "url": "https://www.saucedemo.com/",
+        "users": {
+          "standard": {"username": "standard_user", "password": "secret_sauce"},
+          "locked": {"username": "locked_out_user", "password": "secret_sauce"}
+        }
+      },
+      "production": {
+        "url": "https://www.saucedemo.com/",
+        "users": {
+          "standard": {"username": "prod_user", "password": "prod_password"}
+        }
+      }
+    }
+  }
+  
