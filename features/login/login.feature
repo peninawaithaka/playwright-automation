@@ -8,6 +8,7 @@ Feature: User Login
 
   Scenario Outline: Successful login with valid credentials
     # When I login as "standard" user
+
     When I login with username "<username>" and password "<password>" on the sauce demo page
     Then I should see a "<results>" message
     Examples:

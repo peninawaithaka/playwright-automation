@@ -1,12 +1,13 @@
+import time
 from behave import given, when, then
 from config.config import BASE_URL
 from config.users import USERS
-import time
 from features.views.login_view import LoginScreen
 
 @given('I am on the login page')
 def step_impl(context):
     context.page.goto(BASE_URL)
+
 
 #access the users via a config file
 # @when('I login as "{user_type}" user')
@@ -26,7 +27,7 @@ def step_impl(context):
 #     login_button.click()
 #     time.sleep(10)
 
-#running multiple users for the given test
+#running multiple users for the given test - examples: written within the feature file
 @when(u'I login with username "{username}" and password "{password}" on the sauce demo page')
 def step_impl(context, username, password):
     login_screen = LoginScreen(context.page)
