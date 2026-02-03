@@ -5,21 +5,16 @@ class LoginScreen:
         self.page = page
 
     def user_textfield(self) -> Locator:
-        """
-        Returns the locator for the username textfield and ensure its present before returning it
-        """
-        self.page.wait_for_selector('#user-name')
         return self.page.locator('#user-name')
 
     def password_textfield(self) -> Locator:
-        """
-        Returns the locator for the password textfield and ensure its present before returning it
-        """
-        self.page.wait_for_selector('#password')
         return self.page.locator('#password')    
     
     def login_button(self) -> Locator:
-        """
-        Returns locator for the login button on the login screen
-        """
         return self.page.locator('#login-button')
+    
+    def get_logo(self) -> Locator:
+        return self.page.locator('.app_logo')
+    
+    def get_error_message(self) -> Locator:
+        return self.page.locator('.error-message-container')

@@ -6,8 +6,14 @@ Feature: User Login
   Background:
     Given I am on the login page
 
-  Scenario: Successful login with valid credentials
-    Given I am on the login page
-    When I login as "standard" user
-    # Then I should see an Swag Labs
+  Scenario Outline: Successful login with valid credentials
+    # When I login as "standard" user
+    When I login with username "<username>" and password "<password>" on the sauce demo page
+    Then I should see a "<results>" message
+    Examples:
+    | username        | password      | results  |
+    | standard_user   | secret_sauce  | success |
+    | locked_out_user | secret_sauce  | error   |
+    | invalid_user    | wrong_pass    | error   |
+
 
