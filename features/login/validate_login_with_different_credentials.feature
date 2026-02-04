@@ -7,12 +7,8 @@ Feature: User Login
     Given I am on the login page
 
   Scenario: Successful login with valid credentials
-    When I login as "standard" user in the sauce demo application
-    Then I should be logged in successfully
-
-
-
-
+    When I login with all configured credential
+    Then Login behaviour should be correct
 
 
   #Testing

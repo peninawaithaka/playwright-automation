@@ -29,24 +29,44 @@ def step_impl(context):
     assert app_logo.text_content() == 'Swag Labs', f"Expected: {'Swag Labs'} but found: {app_logo.text_content()}"
 
 
+@when(u'I login with all configured credential')
+def step_impl(context):
+
+    context.results = []
+
+    for user_type, user in context.users.items():
+        login_screen = LoginScreen(context.page)
+
+        login_screen.user_textfield().fill(user['username'])
+        login_screen.password_textfield().fill(user['password'])
+        login_screen.login_button().click()
+
+        if login_screen.get_error_message().is_visible():
+            actual = 'error'
+        else:
+            actual = 'success'
+
+        expected = user.get("expected", "success")
+
+        context.results.append({
+            'user': user_type,
+            'expected': expected,
+            'actual': actual
+                                })
+
+        #resetting state for each user login
+        context.page.goto(context.base_url)
 
 
-# #access the users via a config file
-# # @when('I login as "{user_type}" user')
-# # def step_impl(context, user_type):
-# #     login_screen = LoginScreen(context.page)
-    
-# #     user = USERS[user_type]
-# #     if not user:
-# #         raise ValueError(f"User type '{user_type}' not found in USERS")
 
-# #     username_field = login_screen.user_textfield()
-# #     password_field = login_screen.password_textfield()
-# #     username_field.fill(user['username'])
-# #     password_field.fill(user['password'])
 
-# #     login_button = login_screen.login_button()
-# #     login_button.click()
+@then(u'Login behaviour should be correct')
+def step_impl(context):
+    for result in context.results:
+        assert result['expected'] == result['actual'], (
+            f"Expected: {result['expected']} from {result['user']} but found: {result['actual']}")
+
+
 
 # #running multiple users for the given test - examples: written within the feature file
 # @when(u'I login with username "{username}" and password "{password}" on the sauce demo page')
