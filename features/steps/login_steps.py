@@ -58,8 +58,6 @@ def step_impl(context):
         context.page.goto(context.base_url)
 
 
-
-
 @then(u'Login behaviour should be correct')
 def step_impl(context):
     for result in context.results:
