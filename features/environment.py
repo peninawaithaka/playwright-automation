@@ -1,21 +1,29 @@
 import os
 import json
 from playwright.sync_api import sync_playwright
+from config.browser import ChromeBrowser, FirefoxBrowser, SafariBrowser
+
+def get_browser_instance(playwright):
+    browser_name = os.getenv("BROWSER", "chrome").lower() #defaults to chrome
+    if browser_name == 'chrome':
+        return ChromeBrowser(playwright)
+    if browser_name == 'firefox':
+        return FirefoxBrowser(playwright)
+    if browser_name == 'safari':
+        return SafariBrowser(playwright)
+    else:
+        raise ValueError(f"Unsupported browser: {browser_name}")
+
 
 def before_all(context):
     """Run once before all tests."""
 
-    # Headless toggle via environment variable
-    headless_str = os.getenv("HEADLESS", "true")
-    context.headless = headless_str.lower() == "true"
-
-    # Start Playwright
     context.playwright = sync_playwright().start()
-    context.browser = context.playwright.chromium.launch(
-        headless=context.headless,
-        args=["--disable-dev-shm-usage"]
-    )
-    context.page = context.browser.new_page()
+
+    browser_instance = get_browser_instance(context.playwright)
+
+    headless = os.getenv("HEADLESS", "true").lower() == 'true'
+    context.page = browser_instance.launch(headless=headless)
 
     # Load JSON config
     config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.json')
