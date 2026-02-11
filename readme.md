@@ -28,16 +28,30 @@ The framework is designed with a clear separation of concerns and follows **real
 ## Project Structure
 
 ```
-project-name/
- ├── config/
- │    ├── browser.py
- │    └── config.json
- ├── features/
- │    ├── steps/
- │    ├── pages/
- │    └── environment.py
- ├── api_tests/
- ├── reports/
- ├── requirements.txt
- └── README.md
+playwright-automation/
+│
+├── .github/
+│ └── workflows/
+│ └── ci.yml
+│
+├── api-testing/
+│
+├── config/
+│ ├── browser.py
+│ └── config.json
+│
+├── features/
+│ ├── login/
+│ ├── product/
+│ ├── steps/
+│ ├── views/
+│ └── environment.py
+│
+├── reports/
+│ ├── screenshots/
+│ └── allure-results/
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
 ```

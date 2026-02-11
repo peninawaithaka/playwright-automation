@@ -54,4 +54,3 @@ class TestOrderResponseValidation:
         
         has_email_alias = '+' in customer_email  
         assert has_email_alias is True
-
