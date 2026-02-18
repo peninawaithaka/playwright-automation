@@ -85,7 +85,7 @@ jobs:
 
       - name: Run API tests
         run: |
-          pytest api_tests/ --json-report --json-report-file=reports/api-results.json
+          pytest api_test/ --json-report --json-report-file=reports/api-results.json
 
       - name: Upload API reports
         if: always()
