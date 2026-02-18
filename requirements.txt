@@ -4,3 +4,4 @@ behave-html-formatter==0.9.10
 python-dotenv==1.0.0
 pytest==7.4.3
 allure-behave==2.13.2
+pytest-json-report

@@ -2,11 +2,14 @@ name: Playwright BDD Tests
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-  test:
+  # ---------------------------
+  # UI Tests (BDD)
+  # ---------------------------
+  ui-tests:
     runs-on: ubuntu-latest
 
     env:
@@ -60,3 +63,34 @@ jobs:
         name: screenshots
         path: reports/screenshots/
         retention-days: 10
+
+  # ---------------------------
+  # API Tests (Pytest)
+  # ---------------------------
+  api-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run API tests
+        run: |
+          pytest api_tests/ --json-report --json-report-file=reports/api-results.json
+
+      - name: Upload API reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-reports
+          path: reports/api-results.json
+          retention-days: 10
