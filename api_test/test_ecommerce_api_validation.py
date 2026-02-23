@@ -43,10 +43,12 @@ class TestOrderResponseValidation:
             "message": "Order placed successfully"
         }
         
+        #order id validation
         order_id = api_response['order']['order_id'] 
         assert len(order_id) == 10
         assert order_id.startswith("ORD")
         
+        #customer email validation
         customer_email =  api_response["order"]['customer_email']
         email_parts =   customer_email.split('@')
         assert len(email_parts) == 2
@@ -54,3 +56,22 @@ class TestOrderResponseValidation:
         
         has_email_alias = '+' in customer_email  
         assert has_email_alias is True
+
+        #Totals validation
+        order_total = api_response["order"]["total"]
+        orders_made_total = api_response["order"]["items"]
+
+        calculated_total = 0
+
+        for item in orders_made_total:
+            calculated_total += item['price'] * item['quantity']
+
+        assert calculated_total == order_total
+
+        #order status validation
+        status = api_response["order"]["order_status"]
+        assert status == "confirmed", f"Expected: {"confirmed"} but found: {status}"
+
+if __name__ == "__main__":
+    test_instance = TestOrderResponseValidation()
+    test_instance.test_successful_order_response_validation()
