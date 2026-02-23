@@ -70,7 +70,7 @@ class TestOrderResponseValidation:
 
         #order status validation
         status = api_response["order"]["order_status"]
-        assert status == "confirmed", f"Expected: {"confirmed"} but found: {status}"
+        assert status == "confirmed", f"Expected: {'confirmed'} but found: {status}"
 
 if __name__ == "__main__":
     test_instance = TestOrderResponseValidation()
