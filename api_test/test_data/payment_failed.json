@@ -1,0 +1,23 @@
+{
+    "payment_status": "failed",
+    "error_code": "PAYMENT_DECLINED",
+    "message": "Payment method declined by issuing bank",
+    "transaction": {
+      "transaction_id": "txn_failed123456",
+      "amount": 149.99,
+      "currency": "USD",
+      "payment_method": "credit_card",
+      "card_last4": "0002"
+    },
+    "details": {
+      "reason": "insufficient_funds",
+      "decline_code": "do_not_honor",
+      "merchant_message": "Contact customer to update payment method",
+      "retry_allowed": true
+    },
+    "customer": {
+      "customer_id": "cus_12345",
+      "email": "customer@example.com"
+    },
+    "timestamp": "2024-02-05T15:45:00Z"
+  }

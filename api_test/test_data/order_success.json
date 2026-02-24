@@ -1,0 +1,41 @@
+{
+    "status": "success",
+    "order": {
+      "order_id": "ORD1234567",
+      "customer_email": "sarah.chen+shopping@email.com",
+      "customer_name": "Sarah Chen",
+      "items": [
+        {
+          "product_id": "PROD001",
+          "name": "Laptop",
+          "price": 999.99,
+          "quantity": 1,
+          "discount": 0
+        },
+        {
+          "product_id": "PROD002",
+          "name": "Mouse",
+          "price": 29.99,
+          "quantity": 2,
+          "discount": 5.0
+        }
+      ],
+      "shipping_address": {
+        "street": "123 Main St",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94102",
+        "country": "USA"
+      },
+      "subtotal": 1054.97,
+      "tax": 94.95,
+      "shipping_cost": 15.00,
+      "total": 1164.92,
+      "currency": "USD",
+      "order_status": "confirmed",
+      "payment_method": "credit_card",
+      "created_at": "2024-02-05T10:30:00Z",
+      "estimated_delivery": "2024-02-10T18:00:00Z"
+    },
+    "message": "Order placed successfully"
+  }

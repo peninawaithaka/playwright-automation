@@ -1,0 +1,12 @@
+{
+    "status": "error",
+    "error_code": "INVALID_ADDRESS",
+    "message": "Shipping address validation failed",
+    "details": {
+      "field": "zip",
+      "reason": "Invalid ZIP code format",
+      "provided_value": "9410",
+      "expected_format": "5 digits (e.g., 94102)"
+    },
+    "timestamp": "2024-02-05T10:35:00Z"
+  }

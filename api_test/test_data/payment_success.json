@@ -1,0 +1,33 @@
+{
+    "payment_status": "success",
+    "transaction": {
+      "transaction_id": "txn_abc123xyz789",
+      "amount": 149.99,
+      "currency": "USD",
+      "payment_method": "credit_card",
+      "card_brand": "visa",
+      "card_last4": "4242",
+      "card_exp_month": 12,
+      "card_exp_year": 2025,
+      "capture_id": "cap_xyz789abc123",
+      "authorization_code": "AUTH123456"
+    },
+    "customer": {
+      "customer_id": "cus_12345",
+      "email": "customer@example.com",
+      "name": "Alex Thompson",
+      "billing_address": {
+        "street": "456 Oak Ave",
+        "city": "Portland",
+        "state": "OR",
+        "zip": "97201",
+        "country": "USA"
+      }
+    },
+    "metadata": {
+      "order_id": "ORD9876543",
+      "ip_address": "192.168.1.100",
+      "user_agent": "Mozilla/5.0"
+    },
+    "timestamp": "2024-02-05T14:22:00Z"
+  }
