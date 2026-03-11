@@ -36,11 +36,9 @@ class TestOrderAPI:
         """Test order ID format validation"""
         order_id = order_success_data['order']['order_id']
         
-        # TODO: Call validate_order_id function
-        # is_valid, error = 
+        is_valid, error = order_validator.validate_order_id(order_id)
         
-        # assert is_valid == True, f"Order ID validation failed: {error}"
-        # print(f"✓ Order ID {order_id} is valid")
+        assert is_valid == True, f"Order validation failed: '{error}'"
     
     def test_customer_email_validation(self, order_success_data):
         """Test customer email format"""

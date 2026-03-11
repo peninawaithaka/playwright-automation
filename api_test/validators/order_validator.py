@@ -11,24 +11,23 @@ def validate_order_id(order_id):
     - Must be exactly 10 characters
     - Must start with 'ORD'
     - Remaining 7 characters must be digits
-    
-    Args:
-        order_id (str): The order ID to validate
-    
-    Returns:
-        tuple: (is_valid: bool, error_message: str or None)
-    
-    Example:
-        >>> validate_order_id("ORD1234567")
-        (True, None)
-        >>> validate_order_id("ORD123")
-        (False, "Order ID must be exactly 10 characters")
     """
-    # TODO: Implement validation logic
     # Check length
+    if len(order_id) != 10:
+        return(False, f"Order ID must be exactly 10 characters, got {len(order_id)}")
+    
     # Check prefix
+    if not order_id.startswith("ORD"):
+        actual_prefix = order_id[:3]
+        return(False, f"Order ID must start with 'ORD', got '{actual_prefix}'")
+    
     # Check if remaining characters are digits
-    pass
+    digit_section = order_id[3:]
+    if not digit_section.isdigit():
+        return(False, f"Order ID must have 7 digits after 'ORD', got '{digit_section}'")
+    
+
+    return(True, None)
 
 
 def validate_email_format(email):
@@ -39,34 +38,18 @@ def validate_email_format(email):
     - Must contain exactly one '@' symbol
     - Domain part must contain at least one '.'
     - Must not be empty before or after '@'
-    
-    Args:
-        email (str): The email to validate
-    
-    Returns:
-        tuple: (is_valid: bool, error_message: str or None)
-    
-    Example:
-        >>> validate_email_format("user@example.com")
-        (True, None)
-        >>> validate_email_format("invalid.email")
-        (False, "Email must contain '@' symbol")
     """
-    # TODO: Implement validation logic
-    pass
+    
+    if '@' not in email:
+        return(False, f"Email doesn't contain an '@' symbol.")
+    
+    if '.' not in email:
+        return(False, f"Email doesn't contain a '.'")
 
 
 def check_email_alias(email):
     """
     Check if email contains an alias (+ symbol)
-    
-    Use case: Testing emails often use aliases like user+test@example.com
-    
-    Args:
-        email (str): The email to check
-    
-    Returns:
-        bool: True if email contains '+', False otherwise
     """
     # TODO: Implement check
     pass
