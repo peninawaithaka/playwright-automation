@@ -45,6 +45,12 @@ def validate_email_format(email):
     
     if '.' not in email:
         return(False, f"Email doesn't contain a '.'")
+    
+    split_parts = email.split('@')
+    if len(split_parts) != 2 or not all(split_parts):
+        return(False, "Email is empty or doesn't have a domain name")
+    
+    return(True, None)
 
 
 def check_email_alias(email):

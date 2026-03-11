@@ -44,10 +44,9 @@ class TestOrderAPI:
         """Test customer email format"""
         email = order_success_data['order']['customer_email']
         
-        # # TODO: Call validate_email_format function
-        # is_valid, error = 
+        is_valid, error = order_validator.validate_email_format(email)
         
-        # assert is_valid == True, f"Email validation failed: {error}"
+        assert is_valid == True, f"Email validation failed: {error}"
         
         # # TODO: Check if email has alias
         # has_alias = 
